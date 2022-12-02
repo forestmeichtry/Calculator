@@ -1,45 +1,165 @@
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
-    background-color: aqua;
-}
-
-.calculator-body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 20px;
-    border: solid;
+    align-items: center;
 }
 
-.calculator-screen {
+.svg {
+    position: absolute;
+    height: 0;
+    width: 0;
+}
+
+.calculator {
+    background-image: url("graphics/calculator.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 1000px;
+    width: 800px;
+    flex-shrink: 0;
+}
+
+.screen {
     display: flex;
+    align-items: center;
     flex-direction: row-reverse;
-    justify-content: center;
-    width: 250px;
-    border: solid;
+    font-family: 'Orbitron', sans-serif;
+    text-align: right;
+    font-size: 56px;
+    position: relative;
+    left: 319px;
+    top: 122px;
+    height: 114px;
+    width: 383px;
+    transform: rotate(9.5deg);
 }
 
-.calculator-frame {
-    border: solid;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 4px;
-    width: 250px;
-    height: 250px;
+.calcButton {
+    height: 110px;
+    width: 110px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: .05s;
+    clip-path: polygon(0% 0%, 1% 81%, 80% 95%, 109% 14%, 72% 0%);
 }
 
-.number-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-    height: 40px;
-    border: solid;
-    border-color: black;
+#button7 {
+    background-image: url("graphics/button7.svg");
+    left: 217px;
+    top: 259px;
+    transform: scaleX(1.01);
+}
+
+#button8 {
+    background-image: url("graphics/button8.svg");
+    left: 321px;
+    top: 173px;
+    transform: scaleX(1.01);
+}
+
+#button9 {
+    background-image: url("graphics/button9.svg");
+    left: 433px;
+    top: 86px;
+    transform: scaleX(1.01);
+}
+
+#divButton {
+    background-image: url("graphics/divButton.svg");
+    left: 544px;
+    top: -4px;
+    transform: scaleX(1.01);
+}
+
+#button4 {
+    background-image: url("graphics/button4.svg");
+    left: 172px;
+    top: -74px;
+    transform: scaleX(1.01);
+}
+
+#button5 {
+    background-image: url("graphics/button5.svg");
+    left: 276.5px;
+    top: -160px;
+    transform: scaleX(1.01);
+}
+
+#button6 {
+    background-image: url("graphics/button6.svg");
+    left: 388.4px;
+    top: -247px;
+    transform: scaleX(1.01);
+}
+
+#multButton {
+    background-image: url("graphics/multButton.svg");
+    left: 499.3px;
+    top: -337px;
+    transform: scaleX(1.01);
+}
+
+#button1 {
+    background-image: url("graphics/button1.svg");
+    left: 128.5px;
+    top: -406px;
+    transform: scaleX(1.01);
+}
+
+#button2 {
+    background-image: url("graphics/button2.svg");
+    left: 232.5px;
+    top: -492.5px;
+    transform: scaleX(1.01);
+}
+
+#button3 {
+    background-image: url("graphics/button3.svg");
+    left: 344.5px;
+    top: -579.2px;
+    transform: scaleX(1.01);
+}
+
+#subButton {
+    background-image: url("graphics/subButton.svg");
+    left: 455.5px;
+    top: -670px;
+    transform: scaleX(1.01);
+}
+
+#button0 {
+    background-image: url("graphics/button0.svg");
+    left: 84.1px;
+    top: -740px;
+    transform: scaleX(1.01);
+}
+
+#commaButton {
+    background-image: url("graphics/commaButton.svg");
+    left: 188px;
+    top: -826px;
+    transform: scaleX(1.01);
+}
+
+#equalButton {
+    background-image: url("graphics/equalButton.svg");
+    left: 299.6px;
+    top: -912.6px;
+    transform: scaleX(1.01);
+}
+
+#plusButton {
+    background-image: url("graphics/plusButton.svg");
+    left: 410.5px;
+    top: -1002.7px;
+    transform: scaleX(1.01);
+}
+
+.calcButton:hover {
+    background-position-y: +15px;
 }
