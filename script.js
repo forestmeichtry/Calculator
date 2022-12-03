@@ -25,3 +25,19 @@ function operate(num1, num2, operator) {
         return divide(num1, num2);
     }
 }
+
+function reset() {
+    let screen = document.querySelector(".screen");
+    
+    this.classList.remove("buttonHover");
+    this.classList.add("clickAnimation");
+
+    this.addEventListener("animationend", () => {
+        this.classList.remove("clickAnimation");
+        this.classList.add("buttonHover");
+        screen.textContent = '';
+    });
+}
+
+let testButton = document.querySelector(".clearButton");
+testButton.addEventListener("click", reset);
