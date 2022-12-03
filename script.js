@@ -28,6 +28,8 @@ function operate(num1, num2, operator) {
 
 // clears screen when reset button is activated
 function reset() {
+    let resetSound = new Audio("reset.mp3");
+    resetSound.cloneNode().play();
     this.classList.remove("buttonHover");
     this.classList.add("clickAnimation");
 
@@ -40,6 +42,7 @@ function reset() {
 
 // Determines which button is clicked when an onclick event happens
 function buttonClick() {
+    buttonSound.cloneNode().play();
     this.classList.remove("calcButtonHover");
     this.classList.add("fullClick");
     this.addEventListener("animationend", () => {
@@ -63,6 +66,7 @@ function buttonClick() {
 }
 
 let screen = document.querySelector(".screen");
+let buttonSound = new Audio('Sharp-calculator-single-button-press.mp3');
 let resetButton = document.querySelector(".clearButton");
 resetButton.addEventListener("click", reset);
 const buttons = document.querySelectorAll(".calcButton");
