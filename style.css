@@ -193,12 +193,21 @@ body {
     transform: scaleX(1.01);
 }
 
-.calcButton:hover {
-    background-position-y: +15px;
+.calcButtonHover:hover {
+    background-position-y: +10px;
 }
 
 .buttonHover:hover {
     text-shadow: 0 0 3px #FF0000;
+}
+
+@keyframes fullClickAnimation {
+    to {background-position-y: +15px;}
+}
+
+.fullClick {
+    animation-name: fullClickAnimation;
+    animation-duration: .1s;
 }
 
 @keyframes clickAnimation {
