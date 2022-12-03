@@ -26,9 +26,8 @@ function operate(num1, num2, operator) {
     }
 }
 
+// Resets screen when reset button is activated
 function reset() {
-    let screen = document.querySelector(".screen");
-    
     this.classList.remove("buttonHover");
     this.classList.add("clickAnimation");
 
@@ -39,5 +38,25 @@ function reset() {
     });
 }
 
-let testButton = document.querySelector(".clearButton");
-testButton.addEventListener("click", reset);
+// Determines which button is clicked when an onclick event happens
+function determineButton() {
+    let digit = Number(this.id[this.id.length - 1]);
+    if (digit >= 0) {
+        if (screen.textContent.length < 9) {
+            screen.textContent = screen.textContent + digit;
+        } else {
+            screen.classList.add("blink");
+            screen.addEventListener("animationend", () => {
+                screen.classList.remove("blink");
+            });
+        }
+    }
+}
+
+let screen = document.querySelector(".screen");
+let resetButton = document.querySelector(".clearButton");
+resetButton.addEventListener("click", reset);
+const buttons = document.querySelectorAll(".calcButton");
+buttons.forEach((button) => {
+    button.addEventListener("click", determineButton);
+});

@@ -21,16 +21,21 @@ body {
     width: 800px;
 }
 
+@font-face {
+    font-family: digital7;
+    src: url(digital-7.monoitalic.ttf);
+}
+
 .screen {
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
-    font-family: 'Orbitron', sans-serif;
+    font-family: digital7;
     text-align: right;
-    font-size: 56px;
+    font-size: 90px;
     position: relative;
     left: 319px;
-    top: 122px;
+    top: 112px;
     height: 114px;
     width: 383px;
     transform: rotate(9.5deg);
@@ -62,6 +67,7 @@ body {
     height: 0;
     width: 0;
     transform: rotate(10.5deg);
+    cursor: default;
 }
 
 .calcButton {
@@ -204,4 +210,18 @@ body {
 .clickAnimation {
     animation-name: clickAnimation;
     animation-duration: .2s;
+}
+
+@keyframes blinkAnimation {
+    0% {opacity: 1;}
+    20% {opacity: .5;}
+    40% {opacity: 0;}
+    60% {opacity: .5;}
+    80% {opacity: 1;}
+}
+
+.blink {
+    animation-name: blinkAnimation;
+    animation-duration: .7s;
+    animation-iteration-count: 2;
 }
