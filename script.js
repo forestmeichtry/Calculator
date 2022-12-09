@@ -113,7 +113,7 @@ function buttonClick() {
             blink('', false);
         }
     } else if (this.id === 'equalButton' && screen.textContent) {
-        if (subValue && currentOperation) {
+        if ((subValue || subValue === 0) && currentOperation) {
             operate(subValue, currentValue, currentOperation);
         }
     } else if (this.id === 'periodButton') {
