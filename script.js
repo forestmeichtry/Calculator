@@ -112,7 +112,7 @@ function buttonClick() {
         } else {
             blink('', false);
         }
-    } else if (this.id === 'equalButton') {
+    } else if (this.id === 'equalButton' && screen.textContent) {
         if (subValue && currentOperation) {
             operate(subValue, currentValue, currentOperation);
         }
