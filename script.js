@@ -14,6 +14,8 @@ function divide(num1, num2) {
     return (num1 / num2);
 }
 
+// Causes the screen to blink with an optional message
+// if the reset argument is set to true the calc will be reset after the animation
 function blink(message, reset) {
     if (message) {
         screen.textContent = message;
@@ -38,6 +40,7 @@ function justBlink() {
     screen.removeEventListener("animationend", justBlink);
 }
 
+// Performs mathematic operation using passed numbers and operator
 function operate(num1, num2, operator) {
     num1 = Number(num1);
     num2 = Number(num2);
@@ -52,6 +55,7 @@ function operate(num1, num2, operator) {
     } else if (operator === 'multiply') {
         result = multiply(num1, num2);
     } else if (operator === 'divide') {
+        // If user attemps to divide by zero a message is displayed and the calculator resets
         if (num1 === 0 || num2 === 0) {
             blink("Nice Try", true);
             return;
@@ -65,6 +69,7 @@ function operate(num1, num2, operator) {
         floating = true;
     }
 
+    // A message is displayed if the result is too large for the screen
     if (result >= 1000000000) {
         blink("Too Big", true);
     } else if (result.toString().length > 9) {
@@ -76,7 +81,7 @@ function operate(num1, num2, operator) {
     currentOperation = null;
 }
 
-// clears screen when reset button is activated
+// Resets calculator screens and values
 function resetCalc() {
     resetSound.cloneNode().play();
     this.classList.remove("buttonHover");
@@ -95,7 +100,9 @@ function resetCalc() {
     });
 }
 
+// Performs associated function when a button is clicked
 function buttonClick() {
+    // Plays sound and animation for button click
     buttonSound.cloneNode().play();
     this.classList.remove("calcButtonHover");
     this.classList.add("fullClick");
@@ -104,25 +111,32 @@ function buttonClick() {
         this.classList.add("calcButtonHover");
     });
     
+    // Numeric buttons populate mainscreen
     let digit = Number(this.id[this.id.length - 1]);
     if (digit >= 0) {
         if (screen.textContent.length < 9) {
             screen.textContent = screen.textContent + digit;
             currentValue = Number(screen.textContent);
+        // If there is no space available the mainscreen blinks instead
         } else {
             blink('', false);
         }
+    // If the equal button is clicked and there is a valid operation to perform the operate function is called
     } else if (this.id === 'equalButton' && screen.textContent) {
         if ((subValue || subValue === 0) && currentOperation) {
             operate(subValue, currentValue, currentOperation);
         }
+    // If the currently displayed number is a whole integer float notation can be added
     } else if (this.id === 'periodButton') {
         if (!floating) {
             screen.textContent = screen.textContent + '.';
             floating = true;
         } else {
             blink('', false);
-        }        
+        }
+    // Operators eg(/, *, -, +) will populate the subscreen the first time they are called, and update the current operator.
+    // If called again they will call the operate function to perform the current operator, then use the resulting value
+    // as the subValue for the next operation
     } else if (isNaN(digit) && screen.textContent) {
         if (currentOperation) {
             operate(subValue, currentValue, currentOperation);
