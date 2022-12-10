@@ -145,6 +145,7 @@ function buttonClick() {
         subValue = Number(screen.textContent);
         subScreen.textContent = subValue;
         screen.textContent = '';
+        floating = false;
         switch (this.id) {
             case 'divButton':
                 currentOperation = 'divide';
