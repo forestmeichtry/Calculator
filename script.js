@@ -83,7 +83,7 @@ function operate(num1, num2, operator) {
 
 // Resets calculator screens and values
 function resetCalc() {
-    resetSound.cloneNode().play();
+    setTimeout(() => {  resetSound.cloneNode().play(); }, 100);
     this.classList.remove("buttonHover");
     this.classList.add("clickAnimation");
 
@@ -103,7 +103,7 @@ function resetCalc() {
 // Performs associated function when a button is clicked
 function buttonClick() {
     // Plays sound and animation for button click
-    buttonSound.cloneNode().play();
+    setTimeout(() => {  buttonSound.cloneNode().play(); }, 100);
     this.classList.remove("calcButtonHover");
     this.classList.add("fullClick");
     this.addEventListener("animationend", () => {
