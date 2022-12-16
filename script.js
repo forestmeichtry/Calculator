@@ -167,6 +167,18 @@ function buttonClick() {
     }
 }
 
+// scale calculator to fit window when resized
+function resize() {
+    let height = window.innerHeight;
+    let width = window.innerWidth;
+    
+    if (height < 1000) {
+        calculator.style.transform = "scale(" + height / 1000 + ")";
+    } else if (width < 800) {
+        calculator.style.transform = "scale(" + width / 800 + ")";
+    }
+}
+
 let currentValue = null;
 let subValue = null;
 let currentOperation = null;
@@ -183,3 +195,7 @@ const buttons = document.querySelectorAll(".calcButton");
 buttons.forEach((button) => {
     button.addEventListener("click", buttonClick);
 });
+
+let calculator = document.querySelector(".calculator");
+window.addEventListener("resize", resize);
+resize();
