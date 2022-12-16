@@ -169,13 +169,13 @@ function buttonClick() {
 
 // scale calculator to fit window when resized
 function resize() {
-    let height = window.innerHeight;
-    let width = window.innerWidth;
+    let heightScale = window.innerHeight / 1000;
+    let widthScale = window.innerWidth / 800;
     
-    if (height < 1000) {
-        calculator.style.transform = "scale(" + height / 1000 + ")";
-    } else if (width < 800) {
-        calculator.style.transform = "scale(" + width / 800 + ")";
+    if (heightScale < widthScale) {
+        calculator.style.transform = "scale(" + heightScale + ")";
+    } else {
+        calculator.style.transform = "scale(" + widthScale + ")";
     }
 }
 
